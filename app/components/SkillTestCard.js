@@ -1,6 +1,5 @@
 // components/SkillTestCard.js
 import Image from 'next/image';
-import UpdateModal from "../app/components/UpdateModal";
 export default function SkillTestCard() {
   return (
       <div className="border shadow h-auto w-full flex p-4">

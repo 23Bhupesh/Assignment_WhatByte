@@ -8,9 +8,16 @@ import SyllabusAnalysis from "../app/components/SyllabusAnalysis";
 import ComparisonGraph from "../app/components/ComparisonGraph";
 import QuestionAnalysis from "../app/components/QuestionAnalysis";
 
+// Define the type for data
+type DataType = {
+  rank: number;
+  percentile: number;
+  score: number;
+};
+
 export default function Home() {
   const [isModalOpen, setModalOpen] = useState(false);
-  const [data, setData] = useState({
+  const [data, setData] = useState<DataType>({
     rank: 4,
     percentile: 90,
     score: 12,
@@ -19,7 +26,8 @@ export default function Home() {
   const handleOpenModal = () => setModalOpen(true);
   const handleCloseModal = () => setModalOpen(false);
 
-  const handleSave = (updatedData: any) => {
+  // Use the defined type DataType for updatedData
+  const handleSave = (updatedData: DataType) => {
     setData(updatedData);
   };
 
@@ -138,8 +146,8 @@ export default function Home() {
               </div>
               {/* Question Analysis Component */}
               <div>
-              <QuestionAnalysis correctAnswers={10} totalQuestions={15} />
-            </div>
+                <QuestionAnalysis correctAnswers={data.score} totalQuestions={15} />
+              </div>
             </div>
           </div>
         </div>
